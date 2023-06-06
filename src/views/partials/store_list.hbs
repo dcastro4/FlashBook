@@ -1,0 +1,30 @@
+<h2>Store List</h2>
+<table class="user-table">
+    {{#if stores}}
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Stock</th>
+        <th><center>Action</center></th>
+    </tr>
+    </thead>
+    {{/if}}
+    <tbody>
+    {{#each stores}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{address}}</td>
+        <td><a href="#" class="w3-button w3-padding-small fb-palette-secondary">View Stock</a></td>
+        <td>
+            <form style="display: inline-block;" action="/admin/dashboard/stores/update/{{id}}" method="GET"><button class="w3-button w3-border edit-button w3-padding-small">Edit</button></form>
+            <form style="display: inline-block;" action="/admin/dashboard/stores/remove/{{id}}" method="GET"><button class="w3-button w3-red delete-button w3-padding-small">Delete</button></form>
+        </td>
+    </tr>
+    {{else}}
+        <div class="w3-container w3-card w3-border w3-padding-large w3-margin">
+            <h2 class="w3-text-orange">No Stores created yet</h2>
+        </div>
+    {{/each}}
+    </tbody>
+</table>

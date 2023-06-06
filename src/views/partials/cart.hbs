@@ -1,0 +1,64 @@
+{{#if (eq userType 'user')}}
+
+<!--
+<div class="w3-sidebar w3-bar-block w3-border-right" style="width: 30%; display:none; right:0" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large">Close &times;</button>
+  <p class="w3-bar-item">Total: <span class="w3-text-teal">${{cart_cost.total}}</span></p>
+  <div class="scrollable-sidebar">
+  {{#each cart}}
+    <div class="w3-margin-top">
+      <div class="w3-bar-item">
+        <a href="/books/{{ISBN}}" class="w3-block w3-button fb-palette-fourth"><p>{{title}}</p><p>{{state}}</p><p>${{cost}}</p></a>
+        <a href="/books/removeFromCart/{{id}}" onclick="this.parentElement.remove()" class="w3-block w3-red w3-hover-black w3-padding-small">remove</a>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+  <a href="#" class="w3-button sidebar-button w3-block fb-palette-primary">Buy</a>
+</div>
+-->
+
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-right" style="display:none; right:0" id="mySidebar">
+    <button class="w3-bar-item w3-button w3-large fb-palette-primary" onclick="w3_close()">Close &times;</button>
+    <!--<button class="w3-bar-item w3-button" id="item" onclick="remove(1)">Link</button>-->
+    
+    {{#each cart}}
+    <!--
+    <div class="w3-bar-item w3-padding-small w3-teal">
+      <span class="w3-padding-small w3-button">{{title}} {{state}} {{cost}}</span>
+      <a href="/books/removeFromCart/{{id}}" class="w3-button w3-red w3-padding-small w3-right">Remove</a>
+    </div>
+    -->
+    <div class="w3-bar-item w3-padding-small w3-container">
+      <div class="w3-row-padding w3-margin-bottom w3-margin-top w3-border-bottom">
+        <div class="w3-third w3-margin-bottom">
+          <img src="/books/image/{{ISBN}}" alt="Book Image" style="width: 100%;">
+        </div>
+        <div class="w3-third">
+          <p style="max-height: 40px; overflow: hidden;" title="{{title}}"><b>{{title}}</b></p>
+          <a href="/books/removeFromCart/{{id}}" class="w3-button w3-red w3-padding-small w3-block">Remove</a>
+        </div>
+        <div class="w3-third w3-margin-top">${{cost}}</div>
+      </div>
+    </div>
+    {{/each}}
+    {{#if cart_cost.total}}
+    <div class="w3-bar-item w3-padding-small w3-container">
+      <form action="/user/cart/buy" method="POST" class="w3-container">
+        <input type="submit" class="w3-button w3-block fb-palette-primary" value="Buy ${{cart_cost.total}}">
+        <input type="radio" class="w3-radio w3-radio-small" name="shopping_method" value="home" checked>
+        <label for="home">Home</label>
+        <input type="radio" class="w3-radio w3-radio-small" name="shopping_method" value="store">
+        <label for="store">Store</label>
+        <p>Select the shopping method for the products.</p>
+      </form>
+    </div>
+    {{else}}
+    <div class="w3-bar-item w3-padding-small w3-container">
+      <h1 class="w3-text-orange">There is no products in shopping cart yet</h1>
+    </div>
+    {{/if}}
+</div>
+
+
+{{/if}}

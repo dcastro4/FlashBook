@@ -1,0 +1,72 @@
+  <div class="w3-container">
+    {{#if (eq userType 'root')}}
+    {{else}}
+    <h2>User Profile</h2>
+    <div class="w3-card w3-padding">
+      <h3>Personal Information</h3>
+      <div class="w3-row">
+        <div class="w3-col m6">
+          <label>First Name:</label>
+          <p>{{user.first_name}}</p>
+        </div>
+        <div class="w3-col m6">
+          <label>Last Name:</label>
+          <p>{{user.last_name}}</p>
+        </div>
+      </div>
+      <div class="w3-row">
+        <div class="w3-col m6">
+          <label>DNI:</label>
+          <p>{{user.DNI}}</p>
+        </div>
+        <div class="w3-col m6">
+          <label>Email:</label>
+          <p>{{user.email}}</p>
+        </div>
+      </div>
+      <div class="w3-row">
+        <div class="w3-col m6">
+          <label>Address:</label>
+          <p>{{user.address}}</p>
+        </div>
+        <div class="w3-col m6">
+          <label>Date of Birth:</label>
+          <p>{{user.date_birth}}</p>
+        </div>
+      </div>
+      <div class="w3-row">
+        <div class="w3-col m6">
+          <label>Gender:</label>
+          <p>{{user.gender}}</p>
+        </div>
+        <div class="w3-col m6">
+          <label>Place of Birth:</label>
+          <p>{{user.place_birth}}</p>
+        </div>
+      </div>
+      <div class="w3-row w3-margin-top">
+        <div class="w3-col m12">
+            <a href="/profile/edit" class="w3-button fb-palette-primary">Change Information</a>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    <div class="w3-card w3-padding w3-margin-top">
+      <h3>Change Password</h3>
+      <form class="w3-container" action="/profile/changePassword" method="POST">
+        <div class="w3-row-padding">
+          <div class="w3-half w3-section">
+            <label for="current_password">Current Password:</label>
+            <input class="w3-input w3-border" type="password" id="current_password" name="current_password" required>
+          </div>
+          <div class="w3-half w3-section">
+            <label for="new_password">New Password:</label>
+            <input class="w3-input w3-border" type="password" id="new_password" name="new_password" required>
+          </div>
+        </div>
+        <div class="w3-section">
+          <button class="w3-button fb-palette-primary" type="submit">Change Password</button>
+        </div>
+      </form>
+    </div>
+  </div>

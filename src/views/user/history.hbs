@@ -1,0 +1,74 @@
+  <!--
+  <div class="w3-container">
+    <h2>Buy History</h2>
+    {{#each mybooks}}
+    <div class="w3-card">
+      <div class="book-item w3-container">
+        <img src="/books/image/{{ISBN}}" alt="Book Image" class="book-image">
+        <div class="book-details">
+          <h3>{{title}}</h3>
+          <p>Author: {{author}}</p>
+          <p>Date of Buy: {{date}}</p>
+          <p>Quantity: {{quantity}}</p>
+          <p>State: {{state}}</p>
+          <div class="book-options-bar">
+            <button class="w3-button w3-small w3-block w3-margin-bottom">Refound</button>
+          </div>
+          <div class="book-options">
+            <div class="w3-row">
+              <div class="w3-col m6">
+                <label>Option 1: <input type="checkbox"></label><br>
+                <label>Option 2: <input type="checkbox"></label><br>
+                <label>Option 3: <input type="checkbox"></label><br>
+              </div>
+              <div class="w3-col m6">
+                <label>Additional Comments:</label><br>
+                <textarea class="w3-input w3-border" rows="4" cols="50"></textarea><br>
+                <button class="w3-button w3-small">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  -->
+
+  <div class="w3-container">
+    <h2>Book List</h2>
+    
+    {{#each mybooks}}
+    <div class="w3-card w3-padding w3-margin-bottom">
+      <div class="book">
+        <div class="book-image">
+          <img src="/books/image/{{ISBN}}" alt="Book 1" width="100">
+        </div>
+        <div class="book-info">
+          <h3>{{title}}</h3>
+          <p>Author: {{author}}</p>
+          <p>Date of Buy: {{date}}</p>
+          <p>Quantity: {{quantity}}</p>
+          <p>State: {{state}}</p>
+          <button class="w3-button w3-border w3-border-gray w3-right w3-margin-top" onclick="toggleExpand(this)">Refund</button>
+          <div class="expandable-content w3-container w3-padding-large" style="display: none; border-top: 3px dotted lightgray">
+            <label class="w3-check">
+              <input type="checkbox" class="w3-margin-left">
+              <span>Checkbox 1</span>
+            </label>
+            <label class="w3-check">
+              <input type="checkbox" class="w3-margin-left">
+              <span>Checkbox 2</span>
+            </label>
+            <label class="w3-check">
+              <input type="checkbox" class="w3-margin-left">
+              <span>Checkbox 3</span>
+            </label>
+            <textarea class="w3-input w3-margin-top w3-border" rows="4" placeholder="Additional comments"></textarea>
+            <button class="w3-button w3-small w3-margin-top w3-right">Send Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{/each}}

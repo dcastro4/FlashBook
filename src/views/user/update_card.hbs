@@ -1,0 +1,35 @@
+<form action="/user/card/update/{{card.number}}" method="POST">
+  <div class="w3-container">
+    <h2>Credit Card Information</h2>
+    {{#if card}}
+    <div class="w3-card w3-padding">
+      <div class="w3-row">
+        <div class="w3-col m6">
+          <label>Card Holder:</label>
+          <p>{{user.first_name}} {{user.last_name}}</p>
+        </div>
+        <div class="w3-col m6">
+          <label>Card Number:</label>
+          <input class="w3-input w3-border w3-small" type="number" value="{{card.number}}" id="number" name="number" style="width: 80%;" required autofocus>
+        </div>
+      </div>
+      <div class="w3-row">
+        <div class="w3-col m6">
+          <label>Balance:</label>
+          <input class="w3-input w3-border w3-small" type="number" value="{{card.balance}}" id="balance" name="balance" style="width: 80%;" required>
+        </div>
+        <div class="w3-col m6 w3-margin-bottom">
+          <label>CVV:</label>
+          <input class="w3-input w3-border w3-small" type="number" value="{{card.CCV}}" id="ccv" name="ccv" style="width: 80%;" required>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+  {{#if card}}
+  <div class="w3-container w3-margin-top">
+    <a href="/user/card" class="w3-button w3-border">Cancel</a>
+    <button class="w3-button fb-palette-primary">Update Card</button>
+  </div>
+  {{/if}}
+</form>

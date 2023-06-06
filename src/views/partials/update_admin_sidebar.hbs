@@ -1,0 +1,63 @@
+{{#if option}}
+{{else}}    
+    <h2>Update Admin</h2>
+    <form class="w3-container w3-card w3-round" action="/root/dashboard/update/{{admin.admin}}" method="POST">
+        <div class="w3-row-padding">
+            <div class="w3-half w3-section">
+            <label for="admin">Admin</label>
+            <input class="w3-input w3-border" value="{{admin.admin}}" type="text" id="admin" name="admin" required autofocus>
+            </div>
+            <div class="w3-half w3-section">
+            <label for="password">Password</label>
+            <input class="w3-input w3-border" value="******" type="password" id="password" name="password" disabled>
+            </div>
+        </div>
+        <div class="w3-row-padding">
+            <div class="w3-half w3-section">
+            <label for="dni">DNI</label>
+            <input class="w3-input w3-border" value="{{admin.DNI}}" type="text" id="dni" name="dni" required>
+            </div>
+            <div class="w3-half w3-section">
+            <label for="first_name">First Name</label>
+            <input class="w3-input w3-border" value="{{admin.first_name}}" type="text" id="first_name" name="first_name" required>
+            </div>
+        </div>
+        <div class="w3-row-padding">
+            <div class="w3-half w3-section">
+            <label for="last_name">Last Name</label>
+            <input class="w3-input w3-border" value="{{admin.last_name}}" type="text" id="last_name" name="last_name" required>
+            </div>
+            <div class="w3-half w3-section">
+            <label for="date_of_birth">Date of Birth</label>
+            <input class="w3-input w3-border" value="{{admin.date_birth}}" type="date" id="date_birth" name="date_birth" required>
+            </div>
+        </div>
+        <div class="w3-row-padding">
+            <div class="w3-half w3-section">
+            <label for="place_of_birth">Place of Birth</label>
+            <input class="w3-input w3-border" value="{{admin.place_birth}}" type="text" id="place_birth" name="place_birth" required>
+            </div>
+            <div class="w3-half w3-section">
+            <label for="gender">Gender</label>
+            <select class="w3-select w3-border" id="gender" name="gender" required>
+                <option value="" disabled>Select your gender</option>
+                <option value="male" {{#if (eq admin.gender "Male")}}selected{{/if}}>Male</option>
+                <option value="female" {{#if (eq admin.gender "Female")}}selected{{/if}}>Female</option>
+                <option value="other" {{#if (eq admin.gender "Other")}}selected{{/if}}>Other</option>
+            </select>
+            </div>
+        </div>
+        <div class="w3-section">
+            <label for="email">Email</label>
+            <input class="w3-input w3-border" value="{{admin.email}}" type="email" id="email" name="email" required>
+        </div>
+        <div class="w3-section">
+            <label for="address">Address</label>
+            <input class="w3-input w3-border" value="{{admin.address}}" type="text" id="address" name="address" required>
+        </div>
+        <div class="w3-section">
+            <a href="/root/dashboard" class="w3-button w3-border">Cancel</a>
+            <button class="w3-button fb-palette-primary" type="submit">Update</button>
+        </div>
+        </form>
+{{/if}}

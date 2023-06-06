@@ -1,0 +1,17 @@
+{{#if option}}
+    <h2>Create Store</h2>
+    <form class="w3-container w3-card w3-round" action="/admin/dashboard/stores/add/{{store.id}}" method="POST">
+        <div class="w3-section">
+            <label for="email">Name</label>
+            <input class="w3-input w3-border" type="text" id="name" name="name" required>
+        </div>
+        <div class="w3-section">
+            <label for="address">Address</label>
+            <input class="w3-input w3-border" type="text" id="address" name="address" required>
+        </div>
+        <div class="w3-section">
+            <a href="/admin/dashboard/stores" class="w3-button w3-border">Cancel</a>
+            <button class="w3-button fb-palette-primary" type="submit">Create</button>
+        </div>
+    </form>
+{{/if}}

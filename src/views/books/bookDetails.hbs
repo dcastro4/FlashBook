@@ -1,0 +1,110 @@
+<!--  
+  <div class="w3-container">
+    <div class="w3-row">
+      <div class="w3-col m3">
+        <img src="/books/image/{{book.ISBN}}" alt="Book Image" class="w3-image">
+      </div>
+      <div class="w3-col m8 w3-margin-left">
+        <div>
+          <h2 class="w3-text-dark-gray">{{book.title}}</h2>
+        </div>
+        <p class="w3-text-gray">Author: {{book.author}}</p>
+        <p class="w3-text-gray">Pages: {{book.pages}}</p>
+        <p class="w3-text-gray">Publisher: {{book.publisher}}</p>
+        <h3 class="w3-text-dark-gray">New Copies</h3>
+        <div class="w3-container w3-section scrollable-container">
+          <div class="w3-row-padding">
+          {{#each stock}}
+          {{#if (eq state "New")}}
+            <div class="w3-col m4">
+              <div class="w3-card w3-white">
+                <p class="w3-padding-small">{{state}} - <span class="w3-text-teal">${{cost}}</span></p>
+                <a class="fb-palette-third w3-hover-black" href="/books/addToCart/{{id}}">buy</a>
+                <a class="fb-palette-third w3-hover-black" href="/books/reserve/{{id}}">reserve</a>
+              </div>
+            </div>
+          {{/if}}
+          {{/each}}
+          </div>
+        </div>
+		<h3 class="w3-text-dark-gray">Used Copies</h3>
+        <div class="w3-container w3-section scrollable-container">
+          <div class="w3-row-padding">
+          {{#each stock}}
+          {{#if (eq state "New")}}
+          {{else}}
+            <div class="w3-col m4">
+              <div class="w3-card w3-white">
+                <p class="w3-padding-small">{{state}} - <span class="w3-text-teal">${{cost}}</span></p>
+                <a class="fb-palette-third w3-hover-black" href="/books/addToCart/{{id}}">buy</a>
+                <a class="fb-palette-third w3-hover-black" href="/books/reserve/{{id}}">reserve</a>
+              </div>
+            </div>
+          {{/if}}
+          {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+-->
+  <div class="w3-container">
+    <div class="w3-card w3-padding">
+      <div class="w3-row">
+        <div class="w3-col m2">
+          <img src="/books/image/{{book.ISBN}}" alt="Book Image" style="width:100%">
+        </div>
+        <div class="w3-col m8 w3-margin-left">
+          <h2>{{book.title}}</h2>
+          <p class="w3-text-gray">Author: {{book.author}}</p>
+          <p class="w3-text-gray">Genre: {{book.genre}}</p>
+          <p class="w3-text-gray">Pages: {{book.pages}}</p>
+          <p class="w3-text-gray">Publisher: {{book.publisher}}</p>
+          <p class="w3-text-gray">Publication Date: {{book.publication_date}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container w3-margin-top w3-half w3-margin-bottom">
+    <h3>Used Copies</h3>
+    <div class="w3-row-padding scrollable-container">
+      
+      {{#each stock}}
+      {{#if (eq state "New")}}
+      {{else}}
+      <div class="w3-col l4">
+        <div class="w3-card w3-padding">
+          <p>State: {{state}}</p>
+          <p>Price: ${{cost}}</p>
+          <a class="w3-button w3-black w3-padding-small" href="/books/addToCart/{{id}}">Buy</a>
+          <a class="w3-button w3-border w3-padding-small" href="/books/reserve/{{id}}">Reserve</a>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+      
+      <!-- Add more copies here -->
+      
+    </div>
+  </div>
+
+  <div class="w3-container w3-margin-top w3-half w3-margin-bottom">
+    <h3>New Copies</h3>
+    <div class="w3-row-padding scrollable-container">
+      
+      {{#each stock}}
+      {{#if (eq state "New")}}
+      <div class="w3-col l4">
+        <div class="w3-card w3-padding">
+          <p>State: {{state}}</p>
+          <p>Price: ${{cost}}</p>
+          <a class="w3-button w3-black w3-padding-small" href="/books/addToCart/{{id}}">Buy</a>
+          <a class="w3-button w3-border w3-padding-small" href="/books/reserve/{{id}}">Reserve</a>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+
+    </div>
+  </div>

@@ -1,0 +1,65 @@
+<div class="center">
+  <div class="w3-container w3-half w3-margin-top">
+    <h2 class="w3-text-dark-gray w3-margin-bottom" style="font-weight: bold;">Edit Book</h2>
+    <form class="w3-container w3-card w3-round" action="/admin/dashboard/editBook/{{book.ISBN}}" method="POST" enctype="multipart/form-data">
+      <div class="w3-section">
+        <label for="title">Title</label>
+        <input class="w3-input w3-border" type="text" value="{{book.title}}" id="title" name="title" required>
+      </div>
+      <div class="w3-section">
+        <label for="ISBN">ISBN</label>
+        <input class="w3-input w3-border" type="text" value="{{book.ISBN}}" id="ISBN" name="ISBN" required>
+      </div>
+      <div class="w3-section">
+        <label for="author">Author</label>
+        <input class="w3-input w3-border" type="text" value="{{book.author}}" id="author" name="author">
+      </div>
+      <div class="w3-section">
+        <label for="genre">Genre</label>
+        <select class="w3-select w3-border" id="genre" name="genre" required>
+          <option value="" disabled>Select Genre</option>
+          <option value="Fantasy" {{#if (eq book.gender "Fantasy")}}selected{{/if}}>Fantasy</option>
+          <option value="Sci-Fi" {{#if (eq book.gender "Sci-Fi")}}selected{{/if}}>Sci-Fi</option>
+          <option value="Romance" {{#if (eq book.gender "Romance")}}selected{{/if}}>Romance</option>
+          <option value="Mystery" {{#if (eq book.gender "Mystery")}}selected{{/if}}>Mystery</option>
+          <!-- Add more genre options as needed -->
+        </select>
+      </div>
+      <div class="w3-section">
+        <label for="pages">Pages</label>
+        <input class="w3-input w3-border" type="number" value="{{book.pages}}" id="pages" name="pages" required>
+      </div>
+      <div class="w3-section">
+        <label for="publisher">Publisher</label>
+        <input class="w3-input w3-border" type="text" value="{{book.publisher}}" id="publisher" name="publisher">
+      </div>
+      <div class="w3-section">
+        <label for="language">Language</label>
+        <select class="w3-select w3-border" id="language" name="language" required>
+          <option value="" disabled>Select Language</option>
+          <option value="English" {{#if (eq book.language "English")}}selected{{/if}}>English</option>
+          <option value="Spanish" {{#if (eq book.language "Spanish")}}selected{{/if}}>Spanish</option>
+          <option value="French" {{#if (eq book.language "French")}}selected{{/if}}>French</option>
+          <option value="German" {{#if (eq book.language "German")}}selected{{/if}}>German</option>
+          <!-- Add more language options as needed -->
+        </select>
+      </div>
+      <div class="w3-section">
+        <label for="publication_date">Publication Date</label>
+        <input class="w3-input w3-border" type="date" value="{{book.publication_date}}" id="publication_date" name="publication_date">
+      </div>
+      <div class="w3-section">
+        <label for="saved_image">Current Image</label>
+        <p></p>
+        <img src="/books/image/{{book.ISBN}}" alt="Book Image" width="20%">
+      </div>
+      <div class="w3-section">
+        <label for="image">Change Image</label>
+        <input class="w3-input w3-border" type="file" id="image" name="image" accept="image/*">
+      </div>
+      <div class="w3-section">
+        <button class="w3-button fb-palette-primary w3-round w3-block" type="submit">Update</button>
+      </div>
+    </form>
+  </div>
+</div>

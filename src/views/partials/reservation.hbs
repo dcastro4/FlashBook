@@ -1,0 +1,20 @@
+{{#if (eq userType 'user')}}
+<div class="w3-sidebar w3-bar-block w3-border-right" style="width: 30%; display:none; right:0" id="mySidebar2">
+  <button onclick="w3_close2()" class="w3-bar-item w3-large">Close &times;</button>
+  <p class="w3-bar-item">Total: <span class="w3-text-teal">${{rserv_cost.total}}</span></p>
+  <div class="scrollable-sidebar">
+  {{#each reservation}}
+    <div class="w3-margin-top">
+      <div class="w3-bar-item">
+        <!--<a href="/books/{{ISBN}}" class="w3-block w3-button fb-palette-fourth"><span>{{title}} - {{state}} - ${{cost}}</span></a>-->
+        <a href="/books/{{ISBN}}" class="w3-block w3-button fb-palette-fourth"><p>{{title}}</p><p>{{state}}</p><p>${{cost}}</p></a>
+        <a href="/books/removeFromReservation/{{id}}" onclick="this.parentElement.remove()" class="w3-block w3-red w3-hover-black w3-padding-small">remove</a>
+      </div>
+      <!--<a href="/books/{{ISBN}}" class="w3-bar-item w3-button">{{title}} - {{state}} - ${{cost}}</a>-->
+      <!--<a href="/books/removeFromReservation/{{id}}" onclick="this.parentElement.remove()" class="w3-red w3-padding-small w3-margin-left">remove</a>-->
+    </div>
+  {{/each}}
+  </div>
+  <a href="#" class="w3-button sidebar-button w3-block fb-palette-primary">Buy {{cart_cost}}</a>
+</div>
+{{/if}}

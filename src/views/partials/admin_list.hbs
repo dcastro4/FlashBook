@@ -1,0 +1,30 @@
+<h2>Admin List</h2>
+<table class="user-table">
+    {{#if admins}}
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Full Name</th>
+        <th>Password</th>
+        <th><center>Action</center></th>
+    </tr>
+    </thead>
+    {{/if}}
+    <tbody>
+    {{#each admins}}
+    <tr>
+        <td>{{admin}}</td>
+        <td>{{first_name}} {{last_name}}</td>
+        <td>********</td>
+        <td>
+            <form style="display: inline-block;" action="/root/dashboard/update/{{admin}}" method="GET"><button class="w3-button w3-border edit-button w3-padding-small">Edit</button></form>
+            <form style="display: inline-block;" action="/root/dashboard/remove/{{admin}}" method="GET"><button class="w3-button w3-red delete-button w3-padding-small">Delete</button></form>
+        </td>
+    </tr>
+    {{else}}
+        <div class="w3-container w3-card w3-border w3-padding-large w3-margin">
+            <h2 class="w3-text-orange">No Admins created yet</h2>
+        </div>
+    {{/each}}
+    </tbody>
+</table>

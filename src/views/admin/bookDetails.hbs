@@ -1,0 +1,115 @@
+  <div class="w3-container">
+    <div class="w3-card w3-padding">
+      <div class="w3-row">
+        <div class="w3-col m2">
+          <img src="/books/image/{{book.ISBN}}" alt="Book Image" style="width:100%">
+        </div>
+        <div class="w3-col m9 w3-margin-left">
+          <div class="w3-container w3-display-container">
+            <h2>{{book.title}}</h2>
+            <p class="w3-text-gray">Author: {{book.author}}</p>
+            <p class="w3-text-gray">Genre: {{book.genre}}</p>
+            <p class="w3-text-gray">Pages: {{book.pages}}</p>
+            <p class="w3-text-gray">Publisher: {{book.publisher}}</p>
+            <p class="w3-text-gray">Publication Date: {{book.publication_date}}</p>
+            <a href="/admin/dashboard/addCopy/{{book.ISBN}}" class="w3-bar-item w3-padding-small w3-button w3-border">Add Copy</a>
+            <div class="w3-display-topright w3-margin-top">
+              <a href="/admin/dashboard/editBook/{{book.ISBN}}" class="w3-button w3-border">Edit</a>
+              <a href="/admin/dashboard/removeBook/{{book.ISBN}}" class="w3-button w3-red">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container w3-margin-top w3-half w3-margin-bottom">
+    <h3>Used Copies</h3>
+    <div class="w3-row-padding scrollable-container">
+      
+      {{#each stock}}
+      {{#if (eq state "New")}}
+      {{else}}
+      <div class="w3-col l4">
+        <div class="w3-card w3-padding">
+          <p>State: {{state}}</p>
+          <p>Price: ${{cost}}</p>
+          <a class="w3-button w3-red w3-padding-small" href="/admin/dashboard/removeCopy/{{id}}">Remove</a>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+      
+      <!-- Add more copies here -->
+      
+    </div>
+  </div>
+
+  <div class="w3-container w3-margin-top w3-half w3-margin-bottom">
+    <h3>New Copies</h3>
+    <div class="w3-row-padding scrollable-container">
+      
+      {{#each stock}}
+      {{#if (eq state "New")}}
+      <div class="w3-col l4">
+        <div class="w3-card w3-padding">
+          <p>State: {{state}}</p>
+          <p>Price: ${{cost}}</p>
+          <a class="w3-button w3-red w3-padding-small" href="/admin/dashboard/removeCopy/{{id}}">Remove</a>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+
+    </div>
+  </div>
+  
+  <!--
+  <div class="w3-container">
+    <div class="w3-row">
+      <div class="w3-col m3">
+        <img src="/books/image/{{book.ISBN}}" alt="Book Image" class="w3-image">
+      </div>
+      <div class="w3-col m8 w3-margin-left">
+        <div>
+          <h2 class="w3-text-dark-gray">{{book.title}}</h2>
+          <a class="w3-button w3-border w3-hover-border-light-gray w3-border-gray" href="/admin/dashboard/editBook/{{book.ISBN}}">Edit</a>
+          <a class="w3-button fb-palette-primary" href="/admin/dashboard/removeBook/{{book.ISBN}}">Delete</a>
+        </div>
+        <p class="w3-text-gray">Author: {{book.author}}</p>
+        <p class="w3-text-gray">Pages: {{book.pages}}</p>
+        <p class="w3-text-gray">Publisher: {{book.publisher}}</p>
+        <a href="/admin/dashboard/addCopy/{{book.ISBN}}" class="w3-bar-item w3-padding-small w3-button w3-border">Add Copy</a>
+        <h3 class="w3-text-dark-gray">New Copies</h3>
+        <div class="w3-container w3-section scrollable-container">
+          <div class="w3-row-padding">
+          {{#each stock}}
+          {{#if (eq state "New")}}
+            <div class="w3-col m4">
+              <div class="w3-card w3-white">
+                <p class="w3-padding-small">{{state}} - <span class="w3-text-teal">${{cost}}</span><a class="w3-right fb-palette-third w3-hover-black" href="/admin/dashboard/removeCopy/{{id}}">remove</a></p>
+              </div>
+            </div>
+          {{/if}}
+          {{/each}}
+          </div>
+        </div>
+		<h3 class="w3-text-dark-gray">Used Copies</h3>
+        <div class="w3-container w3-section scrollable-container">
+          <div class="w3-row-padding">
+          {{#each stock}}
+          {{#if (eq state "New")}}
+          {{else}}
+            <div class="w3-col m4">
+              <div class="w3-card w3-white">
+                <p class="w3-padding-small">{{state}} - <span class="w3-text-teal">${{cost}}</span><a class="w3-right fb-palette-third w3-hover-black" href="/admin/dashboard/removeCopy/{{id}}">remove</a></p>
+              </div>
+            </div>
+          {{/if}}
+          {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  -->

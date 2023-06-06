@@ -1,0 +1,148 @@
+    {{#if (eq userType 'user')}}
+    <div class="w3-bar w3-light-gray">
+    <!--<div class="w3-bar fb-palette-secondary">-->
+        <a href="/" class="w3-bar-item w3-button">Inicio - User</a>
+        <a href="/books" class="w3-bar-item w3-button">Books</a>
+
+        <div class="w3-dropdown-hover">
+            <button class="w3-button">Search Book</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card">
+                <form class="w3-container" action="/books" method="get">
+                <input class="w3-input w3-border w3-margin-top" type="text" placeholder="Search" id="search" name="search" required>
+
+                <label for="options">Search Options:</label>
+                <div class="w3-bar">
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="title" checked>
+                    <label>Title</label>
+
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="author">
+                    <label>Author</label>
+
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="ISBN">
+                    <label>ISBN</label>
+
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="publisher">
+                    <label>Publisher</label>
+                </div>
+
+                <button class="w3-button fb-palette-primary w3-margin-bottom w3-margin-top" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="w3-dropdown-hover w3-right">
+            <button class="w3-button">Account</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card">
+                <a href="/profile" class="w3-bar-item w3-button">Profile</a>
+                <a href="/user/history" class="w3-bar-item w3-button">History</a>
+                <a href="/user/card" class="w3-bar-item w3-button">Card</a>
+                <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+            </div>
+        </div>
+        <button class="w3-button w3-right" id="openNav" onclick="w3_open()">Cart</button>
+        <button class="w3-button w3-right" onclick="w3_open2()">Reservation</button>
+    </div>
+    {{/if}}
+
+    {{#if (eq userType 'admin')}}
+    <div class="w3-bar w3-light-gray">
+    <!--<div class="w3-bar fb-palette-secondary">-->
+        <a href="/" class="w3-bar-item w3-button">Inicio - Admin</a>
+        <div class="w3-dropdown-hover">
+            <!--<button class="w3-button"><a href="/admin/dashboard">Dashboard</a></button>-->
+            <a class="w3-button" href="/admin/dashboard">Dashboard</a>
+            <div class="w3-dropdown-content w3-bar-block w3-card">
+                <a href="/admin/dashboard/addBook" class="w3-bar-item w3-button">Add Book</a>
+                <a href="/admin/dashboard/addCopy" class="w3-bar-item w3-button">Add Copy</a>
+                <a href="/admin/dashboard/stores" class="w3-bar-item w3-button">Add Store</a>
+            </div>
+        </div>
+
+        <div class="w3-dropdown-hover">
+            <button class="w3-button">Search Book</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card">
+                <form class="w3-container" action="/books" method="get">
+                <input class="w3-input w3-border w3-margin-top" type="text" placeholder="Search" id="search" name="search" required>
+
+                <label for="options">Search Options:</label>
+                <div class="w3-bar">
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="title" checked>
+                    <label>Title</label>
+
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="author">
+                    <label>Author</label>
+
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="ISBN">
+                    <label>ISBN</label>
+
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="publisher">
+                    <label>Publisher</label>
+                </div>
+
+                <button class="w3-button fb-palette-primary w3-margin-bottom w3-margin-top" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="w3-dropdown-hover w3-right">
+            <button class="w3-button">Account</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card">
+                <a href="/profile" class="w3-bar-item w3-button">Profile</a>
+                <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+    {{#if (eq userType 'root')}}
+    <div class="w3-bar w3-light-gray">
+    <!--<div class="w3-bar fb-palette-secondary">-->
+        <a href="/" class="w3-bar-item w3-button">Inicio - Root</a>
+        <a href="/root/dashboard" class="w3-bar-item w3-button">Dashboard</a>
+
+        <div class="w3-dropdown-hover w3-right">
+            <button class="w3-button">Account</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card">
+                <a href="/profile" class="w3-bar-item w3-button">Profile</a>
+                <a href="/logout" class="w3-bar-item w3-button">Logout</a>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+    {{#if userType}}
+    {{else}}
+    <div class="w3-bar w3-light-gray">
+    <!--<div class="w3-bar fb-palette-secondary">-->
+        <a href="/" class="w3-bar-item w3-button">Inicio - Invited</a>
+        <a href="/books" class="w3-bar-item w3-button">Books</a>
+
+        <div class="w3-dropdown-hover">
+            <button class="w3-button">Search Book</button>
+            <div class="w3-dropdown-content w3-bar-block w3-card">
+                <form class="w3-container" action="/books" method="get">
+                <input class="w3-input w3-border w3-margin-top" type="text" placeholder="Search" id="search" name="search" required>
+
+                <label for="options">Search Options:</label>
+                <div class="w3-bar">
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="title" checked>
+                    <label>Title</label>
+
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="author">
+                    <label>Author</label>
+
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="ISBN">
+                    <label>ISBN</label>
+
+                    <input class="w3-radio w3-radio-small" type="radio" name="options" value="publisher">
+                    <label>Publisher</label>
+                </div>
+
+                <button class="w3-button fb-palette-primary w3-margin-bottom w3-margin-top" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <a href="/signup" class="w3-bar-item w3-button w3-right">Signup</a>
+        <a href="/login" class="w3-bar-item w3-button w3-right">Login</a>
+    </div>
+    {{/if}}

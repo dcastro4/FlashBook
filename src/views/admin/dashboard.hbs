@@ -1,0 +1,13 @@
+  <div class="w3-container w3-padding-large">
+  {{#each books}}
+    <div class="w3-col l2 w3-margin-left w3-margin-bottom">
+      <div class="w3-card">
+        <img src="/books/image/{{ISBN}}" alt="Book Image" style="width:100%;">
+        <div class="w3-container">
+          <h4><a href="/admin/dashboard/book/{{ISBN}}" class="w3-hover-gray">{{title}}</a></h4>
+          <p>{{author}}</p>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  </div>

@@ -1,0 +1,66 @@
+<form action="/user/card/add" method="POST">
+  <div class="w3-container">
+    <h2>Credit Card Information</h2>
+    {{#if card}}
+    <div class="w3-card w3-padding">
+      <div class="w3-display-container">
+        <a href="/user/card/delete/{{card.number}}" class="w3-button w3-padding-small w3-red w3-display-topright">Delete</a>
+      </div>
+      <div class="w3-row">
+        <div class="w3-col m6">
+          <label>Card Holder:</label>
+          <p>{{user.first_name}} {{user.last_name}}</p>
+        </div>
+        <div class="w3-col m6">
+          <label>Card Number:</label>
+          <p>{{card.number}}</p>
+        </div>
+      </div>
+      <div class="w3-row">
+        <div class="w3-col m6">
+          <label>Balance:</label>
+          <p>${{card.balance}}</p>
+        </div>
+        <div class="w3-col m6">
+          <label>CVV:</label>
+          <p>{{card.CCV}}</p>
+        </div>
+      </div>
+      <div class="w3-row w3-margin-top">
+        <div class="w3-col m12">
+          <a href="/user/card/update/{{card.number}}" class="w3-button w3-padding-small w3-border">Edit Card</a>
+        </div>
+      </div>
+    </div>
+    {{else}}
+    <div class="w3-card w3-padding">
+      <div class="w3-row">
+        <div class="w3-col m6">
+          <label>Card Holder:</label>
+          <p>{{user.first_name}} {{user.last_name}}</p>
+        </div>
+        <div class="w3-col m6">
+          <label>Card Number:</label>
+          <input class="w3-input w3-border w3-small" type="number" id="number" name="number" style="width: 80%;" required autofocus>
+        </div>
+      </div>
+      <div class="w3-row">
+        <div class="w3-col m6">
+          <label>Balance:</label>
+          <input class="w3-input w3-border w3-small" type="number" id="balance" name="balance" style="width: 80%;" required>
+        </div>
+        <div class="w3-col m6 w3-margin-bottom">
+          <label>CVV:</label>
+          <input class="w3-input w3-border w3-small" type="number" id="ccv" name="ccv" style="width: 80%;" required>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+  </div>
+  {{#if card}}
+  {{else}}
+  <div class="w3-container w3-margin-top">
+    <button class="w3-button fb-palette-primary w3-card">Add Card</button>
+  </div>
+  {{/if}}
+</form>

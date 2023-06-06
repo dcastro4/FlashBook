@@ -1,0 +1,79 @@
+<div class="center">
+  <div class="w3-container w3-half w3-margin-top">
+    <h2 class="w3-text-dark-gray w3-margin-bottom" style="font-weight: bold;">SignUp</h2>
+    <form class="w3-container w3-card w3-round" action="/signup" method="POST">
+      <div class="w3-row-padding">
+        <div class="w3-half w3-section">
+          <label for="user">Username</label>
+          <input class="w3-input w3-border" type="text" id="user" name="user" required autofocus>
+        </div>
+        <div class="w3-half w3-section">
+          <label for="password">Password</label>
+          <input class="w3-input w3-border" type="password" id="password" name="password" required>
+        </div>
+      </div>
+      <div class="w3-row-padding">
+        <div class="w3-half w3-section">
+          <label for="dni">DNI</label>
+          <input class="w3-input w3-border" type="text" id="dni" name="dni" required>
+        </div>
+        <div class="w3-half w3-section">
+          <label for="first_name">First Name</label>
+          <input class="w3-input w3-border" type="text" id="first_name" name="first_name" required>
+        </div>
+      </div>
+      <div class="w3-row-padding">
+        <div class="w3-half w3-section">
+          <label for="last_name">Last Name</label>
+          <input class="w3-input w3-border" type="text" id="last_name" name="last_name" required>
+        </div>
+        <div class="w3-half w3-section">
+          <label for="date_birth">Date of Birth</label>
+          <input class="w3-input w3-border" type="date" id="date_birth" name="date_birth" required>
+        </div>
+      </div>
+      <div class="w3-row-padding">
+        <div class="w3-half w3-section">
+          <label for="place_birth">Place of Birth</label>
+          <input class="w3-input w3-border" type="text" id="place_birth" name="place_birth" required>
+        </div>
+        <div class="w3-half w3-section">
+          <label for="gender">Gender</label>
+          <select class="w3-select w3-border" id="gender" name="gender" required>
+            <option value="" disabled selected>Select your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="w3-section">
+        <label for="favorite">Preference Category</label>
+        <select class="w3-select w3-border" id="favorite" name="favorite" required>
+          <option value="" disabled selected>Select a Category</option>
+          <option value="horror">Horror</option>
+          <option value="scifi">SciFi</option>
+          <option value="romance">Romance</option>
+          <option value="poetry">Poetry</option>
+          <option value="adventure">Adventure</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="comedy">Comedy</option>
+        </select>
+      </div>
+      <div class="w3-section">
+        <label for="email">Email</label>
+        <input class="w3-input w3-border" type="email" id="email" name="email" required>
+      </div>
+      <div class="w3-section">
+        <label for="address">Address</label>
+        <input class="w3-input w3-border" type="text" id="address" name="address" required>
+      </div>
+      <div class="w3-section">
+        <button class="w3-button fb-palette-primary w3-round w3-block" type="submit">Register</button>
+      </div>
+    </form>
+    <div class="w3-center">
+        <p>I already have an account, <a class="w3-hover-text-blue-gray" style="text-decoration: underline;" href="/login">Login</a></p>
+    </div>
+  </div>
+</div>
