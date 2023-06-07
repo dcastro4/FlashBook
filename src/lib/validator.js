@@ -2,7 +2,7 @@ const db = require('../database');
 const helpers = require('../lib/helpers');
 
 const helper = {}
-helper.isLoginOk = async (user) => { // BUSCA EL USUARIO Y DEVUELVE ROOT O ADMIN O USER O UNDEFINED
+helper.isLoginOk = async (user) => { // BUSCA EL USUARIO Y DEVUELVE ROOT O ADMIN O USER O UNDEFINEDz
     var users = await db.query('SELECT * FROM root WHERE root = ?', [user.username]);
     if (users.length > 0) {
         const person = users[0];
