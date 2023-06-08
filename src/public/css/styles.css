@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .fb-palette-primary {
   background-color: #27374D;
   color: white;
@@ -108,4 +112,30 @@
 
   .book-info {
     flex-grow: 1;
+  }
+  
+  .mySlides {display:none;}
+
+  .category-section {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .category-card {
+    display: inline-block;
+    width: 200px;
+    margin: 10px;
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .category-card h3, .category-card p {
+    overflow: hidden;
+  }
+
+  .category-card img {
+    max-width: 150px;
+    max-height: 200px;
+    margin-bottom: 10px;
   }

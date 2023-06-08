@@ -5,7 +5,6 @@ const validator = require(path.join(__dirname, '..', '..', 'lib', 'validator'));
 
 const multer = require('multer');
 const fs = require('fs');
-const { isUndefined } = require('util');
 const upload = multer({dest: path.join(__dirname, '..', '..', 'public', 'images', 'books')});
 
 const db = require(path.join(__dirname, '..', '..', 'database'));
@@ -212,6 +211,16 @@ router.get('/dashboard/removeCopy/:id', async (req, res) => {
         res.redirect('/admin/dashboard/book/'+ISBN);
     } else {
         res.redirect('/books/'+ISBN);
+    }
+});
+
+router.get('/dashboard/outOfStock', async (req, res) => {
+    if (req.session.role == 'admin') {
+        const q = 'SELECT * FROM book WHERE ISBN NOT IN (SELECT ISBN FROM stock)'
+        const books = await db.query(q);
+        res.render('./admin/out_of_stock', {userType: req.session.role, books});
+    } else {
+        res.redirect('/books');
     }
 });
 

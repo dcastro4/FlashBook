@@ -54,6 +54,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+/*
 router.get('/addToCart/:id', async (req, res) => {
     const id = req.params.id;
     if (req.session.role == 'user') {
@@ -78,6 +79,36 @@ router.get('/addToCart/:id', async (req, res) => {
         res.redirect('/login');
     }
 });
+*/
+
+router.get('/addToCart/:id', async (req, res) => {
+    const id = req.params.id;
+    if (req.session.role == 'user') {
+        const stock = await db.query('SELECT * FROM stock WHERE id = ?', [id]);
+        const book = stock[0];
+
+        const productinmycart = await db.query('SELECT * FROM cart WHERE id_stock = ? AND user = ?', [id,req.session.user]);
+        if (productinmycart.length == 0) {
+            const result = await db.query('SELECT * FROM reservation WHERE id_stock = ?', [id]);
+            if (result.length == 0) {
+                const date = new Date();
+
+                await db.query('INSERT INTO cart VALUES (?,?,?)', [id,req.session.user,date]);
+                const original = await db.query('SELECT * from book WHERE ISBN = ?', [book.ISBN]);
+                const cart_cost = await db.query('SELECT SUM(stock.cost) AS total FROM cart, stock WHERE cart.user = ? AND cart.id_stock = stock.id', [req.session.user]);
+                book.total = cart_cost[0].total;
+                book.title = original[0].title;
+                res.json(book);
+            } else { // IT IS ALREADY IN A RESERVATION
+                res.send(null);
+            }
+        } else { // PRODUCT ALREADY IN MY CART
+            res.send(null);
+        }
+    } else {
+        res.redirect('/login');
+    }
+});
 
 router.get('/removeFromCart/:id', async (req, res) => {
     const id = req.params.id;
@@ -86,7 +117,9 @@ router.get('/removeFromCart/:id', async (req, res) => {
         const productinmycart = await db.query('SELECT * FROM cart WHERE id_stock = ? AND user = ?', [id,req.session.user]);
         if (productinmycart.length > 0) {
             await db.query('DELETE FROM cart WHERE id_stock = ? AND user = ?', [id,req.session.user]);
-            res.redirect('/books');
+            // res.redirect('/books');
+            const cart_cost = await db.query('SELECT SUM(stock.cost) AS total FROM cart, stock WHERE cart.user = ? AND cart.id_stock = stock.id', [req.session.user]);
+            res.send(''+cart_cost[0].total);
         } else { // PRODUCT NOT IN MY CART
             res.redirect('/books');
         }

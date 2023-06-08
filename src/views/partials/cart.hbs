@@ -29,23 +29,24 @@
       <a href="/books/removeFromCart/{{id}}" class="w3-button w3-red w3-padding-small w3-right">Remove</a>
     </div>
     -->
-    <div class="w3-bar-item w3-padding-small w3-container">
+    <div class="w3-bar-item w3-padding-small w3-container" id="product_{{id}}">
       <div class="w3-row-padding w3-margin-bottom w3-margin-top w3-border-bottom">
         <div class="w3-third w3-margin-bottom">
           <img src="/books/image/{{ISBN}}" alt="Book Image" style="width: 100%;">
         </div>
         <div class="w3-third">
           <p style="max-height: 40px; overflow: hidden;" title="{{title}}"><b>{{title}}</b></p>
-          <a href="/books/removeFromCart/{{id}}" class="w3-button w3-red w3-padding-small w3-block">Remove</a>
+          <!--<a href="/books/removeFromCart/{{id}}" class="w3-button w3-red w3-padding-small w3-block">Remove</a>-->
+          <button onclick="removeFromCart({{id}})" class="w3-button w3-red w3-padding-small w3-block">Remove</button>
         </div>
         <div class="w3-third w3-margin-top">${{cost}}</div>
       </div>
     </div>
     {{/each}}
     {{#if cart_cost.total}}
-    <div class="w3-bar-item w3-padding-small w3-container">
+    <div class="w3-bar-item w3-padding-small w3-container" id="buy_section">
       <form action="/user/cart/buy" method="POST" class="w3-container">
-        <input type="submit" class="w3-button w3-block fb-palette-primary" value="Buy ${{cart_cost.total}}">
+        <input type="submit" class="w3-button w3-block fb-palette-primary" value="Buy ${{cart_cost.total}}" id="buy_button">
         <input type="radio" class="w3-radio w3-radio-small" name="shopping_method" value="home" checked>
         <label for="home">Home</label>
         <input type="radio" class="w3-radio w3-radio-small" name="shopping_method" value="store">

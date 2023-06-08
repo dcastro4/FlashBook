@@ -19,9 +19,13 @@
         <select class="w3-select w3-border" id="genre" name="genre" required>
           <option value="" disabled>Select Genre</option>
           <option value="Fantasy" {{#if (eq book.gender "Fantasy")}}selected{{/if}}>Fantasy</option>
-          <option value="Sci-Fi" {{#if (eq book.gender "Sci-Fi")}}selected{{/if}}>Sci-Fi</option>
+          <option value="SciFi" {{#if (eq book.gender "Sci-Fi")}}selected{{/if}}>Sci-Fi</option>
           <option value="Romance" {{#if (eq book.gender "Romance")}}selected{{/if}}>Romance</option>
-          <option value="Mystery" {{#if (eq book.gender "Mystery")}}selected{{/if}}>Mystery</option>
+          <option value="Mystery" {{#if (eq book.gender "Mistery")}}selected{{/if}}>Mistery</option>
+          <option value="Adventure" {{#if (eq book.gender "Adventure")}}selected{{/if}}>Adventure</option>
+          <option value="Poetry" {{#if (eq book.gender "Poetry")}}selected{{/if}}>Poetry</option>
+          <option value="Horror" {{#if (eq book.gender "Horror")}}selected{{/if}}>Horror</option>
+          <option value="Science" {{#if (eq book.gender "Science")}}selected{{/if}}>Science</option>
           <!-- Add more genre options as needed -->
         </select>
       </div>
